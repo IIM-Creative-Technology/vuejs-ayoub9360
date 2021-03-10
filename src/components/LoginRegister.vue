@@ -17,8 +17,8 @@
     <button v-if="title === 'Inscription'">S'inscrire</button>
 
 
-    <router-link v-if="title === 'Connexion'" class="" to="/">S'inscrire</router-link>
-    <router-link v-if="title === 'Inscription'" class="connexion" to="/">Se connecter</router-link>
+    <router-link v-if="title === 'Connexion'" class="registerButton" to="/">S'inscrire</router-link>
+    <router-link v-if="title === 'Inscription'" class="loginButton" to="/">Se connecter</router-link>
   </div>
 </template>
 
@@ -61,12 +61,22 @@ button {
   margin: 30px 0;
 }
 
-.connexion {
+.loginButton {
   text-decoration: none;
   color: #F8B018;
 
   &:before {
     content: 'Déjà inscrit ? ';
+    color: #333;
+  }
+}
+
+.registerButton {
+  text-decoration: none;
+  color: #F8B018;
+
+  &:before {
+    content: 'Pas encore inscrit ? ';
     color: #333;
   }
 }
