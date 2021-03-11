@@ -1,9 +1,18 @@
 <template>
   <div>
     <ul>
-      <li>Admin</li>
-      <li>Blog</li>
-      <li>Login</li>
+      <li>
+        <router-link to="/">Home</router-link>
+      </li>
+      <li>
+        <router-link to="/admin">Admin</router-link>
+      </li>
+      <li>
+        <router-link to="/login"> Connexion</router-link>
+      </li>
+      <li>
+        <router-link to="/register">Inscription</router-link>
+      </li>
     </ul>
   </div>
 </template>
@@ -25,6 +34,11 @@ export default {
 
 div {
   border-radius: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: white;
 }
 
 ul {
