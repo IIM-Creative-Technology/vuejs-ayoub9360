@@ -5,8 +5,9 @@
       <ArticleItem v-for="post in posts"
                    :key="posts"
                    :title="post.name"
-                   :description="post.descArticle"
-                   :id="post.id"></ArticleItem>
+                   :description="post.metaDesc"
+                   :id="post.id"
+                   :admin="true"></ArticleItem>
     </div>
   </main>
 </template>
