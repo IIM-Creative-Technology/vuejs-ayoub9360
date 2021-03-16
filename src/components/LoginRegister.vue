@@ -17,8 +17,8 @@
     <button v-if="title === 'Inscription'">S'inscrire</button>
 
 
-    <router-link v-if="title === 'Connexion'" class="registerButton" to="/">S'inscrire</router-link>
-    <router-link v-if="title === 'Inscription'" class="loginButton" to="/">Se connecter</router-link>
+    <router-link v-if="title === 'Connexion'" class="registerButton" to="/register">S'inscrire</router-link>
+    <router-link v-if="title === 'Inscription'" class="loginButton" to="/login">Se connecter</router-link>
   </div>
 </template>
 

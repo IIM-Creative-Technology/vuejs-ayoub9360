@@ -10,11 +10,13 @@ import LoginRegister from '@/components/LoginRegister.vue'
 export default {
   name: "Register",
   components: {
-    LoginRegister
+    LoginRegister,
   }
 }
 </script>
 
 <style scoped>
-
+main {
+  padding-top: 70px;
+}
 </style>

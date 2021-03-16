@@ -1,14 +1,28 @@
 <template>
   <main class="home">
-    <h1>Home</h1>
-
+    <ArticleItem
+        v-for="item in posts"
+        :title="item.name"
+        :description="item.descArticle"
+    ></ArticleItem>
   </main>
 </template>
 
 <script>
+import ArticleItem from "@/components/ArticleItem"
 
 export default {
   name: 'Home',
-  components: {}
+  components: {
+    ArticleItem
+  },
+  data() {
+    return {
+      posts: null
+    }
+  },
+  mounted() {
+    this.posts = this.$store.state.posts
+  }
 }
 </script>

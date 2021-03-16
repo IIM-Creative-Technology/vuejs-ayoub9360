@@ -1,17 +1,17 @@
 <template>
   <div>
     <h1>{{ titlePage }}</h1>
-    <label v-if="titleArticle" htmlFor="titleArticle">Titre de la page</label>
-    <input v-if="titleArticle" type="text" id="titleArticle" name="titleArticle">
+    <label v-if="titlePage === 'ADD Post'" htmlFor="titleArticle">Titre de la page</label>
+    <input v-if="titlePage === 'ADD Post'" type="text" id="titleArticle" name="titleArticle" v-model="post.name">
     <label htmlFor="metaTitle">Meta title</label>
-    <input type="text" id="metaTitle" name="metaTitle">
+    <input type="text" id="metaTitle" name="metaTitle" v-model="post.metaTitle">
     <label htmlFor="metaDescription">Meta description</label>
-    <input type="text" id="metaDescription" name="metaDescription">
-    <label htmlFor="image">Image</label>
-    <input type="text" id="image" name="image">
+    <input type="text" id="metaDescription" name="metaDescription" v-model="post.metaDesc">
+    <label htmlFor="image">lien de l'image</label>
+    <input type="text" id="image" name="image" v-model="post.image">
     <label htmlFor="descArticle">Description</label>
-    <input type="text" id="descArticle" name="descArticle">
-    <button>Modifier</button>
+    <input type="text" id="descArticle" name="descArticle" v-model="post.descArticle">
+    <button @click="addPost">Ajouter</button>
   </div>
 </template>
 
@@ -20,8 +20,23 @@ export default {
   name: 'ArticleInfo',
   props: {
     titlePage: String,
-    titleArticle: Boolean
   },
+  data() {
+    return {
+      post: {
+        name: null,
+        metaTitle: null,
+        metaDesc: null,
+        image: null,
+        descArticle: null,
+      }
+    }
+  },
+  methods: {
+    addPost() {
+      this.$store.state.posts.push(this.post)
+    }
+  }
 }
 </script>
 
