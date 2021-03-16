@@ -2,11 +2,11 @@
   <main>
     <router-link to="/admin/add"> Ajouter un blog</router-link>
     <div>
-      <ArticleItem v-for="post in posts"
-                   :key="posts"
+      <ArticleItem v-for="(post, index) in posts"
+                   :key="index"
                    :title="post.name"
                    :description="post.metaDesc"
-                   :id="post.id"
+                   :id="index"
                    :admin="true"></ArticleItem>
     </div>
   </main>

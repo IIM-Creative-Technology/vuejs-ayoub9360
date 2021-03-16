@@ -1,9 +1,10 @@
 <template>
   <main class="home">
     <ArticleItem
-        v-for="item in posts"
+        v-for="(item, index) in posts"
         :title="item.name"
         :description="item.descArticle"
+        :id="index"
     ></ArticleItem>
   </main>
 </template>
