@@ -35,6 +35,7 @@ export default {
   methods: {
     addPost() {
       this.$store.state.posts.push(this.post)
+      this.$router.push({ name: 'Admin' });
     }
   }
 }

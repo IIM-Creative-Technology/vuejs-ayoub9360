@@ -7,7 +7,9 @@
                    :title="post.name"
                    :description="post.metaDesc"
                    :id="index"
-                   :admin="true"></ArticleItem>
+                   :admin="true"
+                   @click="deleteOnePost(id)">
+                   </ArticleItem>
     </div>
   </main>
 </template>
@@ -27,7 +29,15 @@ export default {
   },
   mounted() {
     this.posts = this.$store.state.posts
+  },
+  methods: {
+    deleteOnePost(data){
+      console.log(data)
+      this.$store.state.posts.splice(data, 1)
+      this.posts = this.$store.state.posts
+    }
   }
+  
 }
 </script>
 

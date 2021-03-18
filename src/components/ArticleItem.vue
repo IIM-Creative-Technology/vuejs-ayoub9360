@@ -6,7 +6,7 @@
       <p class="description">{{ description }}</p>
       <button v-if="admin" @click="openEdit">Editer</button>
       <button v-if="!admin" @click="">Voir</button>
-      <img v-if="admin" class="cross" src="@/assets/cross.png" alt="Croix rouge">
+      <img v-if="admin" class="cross" @click="deletePost(id)" src="@/assets/cross.png" alt="Croix rouge">
     </div>
     <div v-if="edit && admin">
       <label for="name">Name</label> <br>
@@ -59,6 +59,9 @@ export default {
       } else {
         this.edit = true
       }
+    },
+    deletePost(id){
+      this.$emit('deleteOnePost', id)
     }
   }
 }
