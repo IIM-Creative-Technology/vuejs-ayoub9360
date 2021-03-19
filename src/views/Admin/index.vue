@@ -1,16 +1,15 @@
 <template>
   <main>
     <router-link to="/admin/add"> Ajouter un blog</router-link>
-    <div>
-      <ArticleItem v-for="(post, index) in posts"
-                   :key="index"
-                   :title="post.name"
-                   :description="post.metaDesc"
-                   :id="index"
-                   :admin="true"
-                   @click="deleteOnePost(id)">
-                   </ArticleItem>
-    </div>
+    <ArticleItem v-for="(post, index) in posts"
+                 :key="index"
+                 :title="post.name"
+                 :description="post.descArticle"
+                 :image="post.image"
+                 :id="index"
+                 :admin="true"
+                 @deleteOnePost="deletePost(id)">
+    </ArticleItem>
   </main>
 </template>
 
@@ -31,25 +30,17 @@ export default {
     this.posts = this.$store.state.posts
   },
   methods: {
-    deleteOnePost(data){
+    deletePost(data) {
       console.log(data)
       this.$store.state.posts.splice(data, 1)
       this.posts = this.$store.state.posts
     }
   }
-  
+
 }
 </script>
 
 <style scoped>
-div {
-  background: white;
-  padding: 100px 20px;
-  width: 80%;
-  margin: auto;
-  border: solid 1px #00000020;
-  border-radius: 10px;
-}
 
 main {
   background: #f8f8f8;

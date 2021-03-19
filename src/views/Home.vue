@@ -5,6 +5,7 @@
         :title="item.name"
         :description="item.descArticle"
         :id="index"
+        :image="item.image"
     ></ArticleItem>
   </main>
 </template>

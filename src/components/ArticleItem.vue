@@ -1,24 +1,25 @@
 <template>
   <div>
+    <!--One Article-->
     <div class="articleItem">
       <img class="articleImage" :src="image" alt="Image de profil">
       <p class="title">{{ id }} - {{ title }}</p>
       <p class="description">{{ description }}</p>
-      <button v-if="admin" @click="openEdit">Editer</button>
-      <button v-if="!admin" @click="">Voir</button>
-      <img v-if="admin" class="cross" @click="deletePost(id)" src="@/assets/cross.png" alt="Croix rouge">
+      <button v-if="admin" @click="openEdit(id)">Editer</button>
+      <router-link class="button" v-if="!admin" :to="{name: 'BlogVue', params: {id: id}}">Voir</router-link>
+      <img v-if="admin" @click="deletePost(id)" class="cross" src="@/assets/cross.png" alt="Croix rouge">
     </div>
+
+    <!--If is editing-->
     <div v-if="edit && admin">
-      <label for="name">Name</label> <br>
-      <input type="text" id="name"> <br>
       <label for="metaTitle">MetaTitle</label> <br>
-      <input type="text" id="metaTitle"> <br>
+      <input type="text" id="metaTitle" v-model="post.metaTitle"> <br>
       <label for="MetaDesc">MetaDesc</label> <br>
-      <input type="text" id="MetaDesc"> <br>
+      <input type="text" id="MetaDesc" v-model="post.metaDesc"> <br>
       <label for="Image">Image</label> <br>
-      <input type="text" id="Image"> <br>
+      <input type="text" id="Image" v-model="post.image"> <br>
       <label for="Description">Description</label> <br>
-      <input type="text" id="Description"> <br>
+      <input type="text" id="Description" v-model="post.descArticle"> <br>
       <button @click="editPost">Save</button>
     </div>
   </div>
@@ -49,7 +50,8 @@ export default {
   },
   data() {
     return {
-      edit: false
+      edit: false,
+      post: null
     }
   },
   methods: {
@@ -60,9 +62,17 @@ export default {
         this.edit = true
       }
     },
-    deletePost(id){
+    editPost(id) {
+      this.$store.state.posts.push(this.post);
+      this.$store.state.posts.splice(this.id, 1);
+      this.$router.push({name: 'Home'});
+    },
+    deletePost(id) {
       this.$emit('deleteOnePost', id)
     }
+  },
+  mounted() {
+    this.post = this.$store.state.posts[this.id]
   }
 }
 </script>
@@ -81,7 +91,8 @@ export default {
   margin: 10px auto;
 }
 
-button {
+.button, button {
+  text-decoration: none;
   background: #F8B018;
   padding: 10px 30px;
   border: solid 1px #F8B018;
