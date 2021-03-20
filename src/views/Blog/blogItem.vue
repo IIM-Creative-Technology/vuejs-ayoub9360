@@ -5,7 +5,7 @@
     <p>{{ posts.descArticle }}</p>
   </div>
   <footer>
-    <span>Publié le 22/03/21</span>
+    <span>Publié le {{ getDate }}</span>
     <div>
       <span>Natacha Rodriguez</span>
       <img
@@ -32,6 +32,14 @@ export default {
     //Get data before render of the view
     this.posts = this.$store.state.posts[this.$route.params.id]
   },
+  computed: {
+    getDate() {
+      const now = new Date()
+      const day = now.toLocaleString("default", {weekday: "long"})
+      const month = now.toLocaleString("default", {month: "long"})
+      return `${day} ${now.getDay()} ${month}`
+    },
+  }
 }
 </script>
 
