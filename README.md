@@ -1,6 +1,5 @@
 # Vue Cms Rendu IIM
-##Contributeur
-
+Contributeur :
 - Ayoub El Guendouz
 - Sacha Lebras
 
